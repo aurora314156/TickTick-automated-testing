@@ -10,6 +10,7 @@ desired_caps['skipUnlock'] = 'true'
 
 driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
+<<<<<<< HEAD
 
 # test Task General.
 driver.find_element_by_id('com.ticktick.task:id/skip_tutorial').click()
@@ -17,3 +18,5 @@ driver.find_element_by_id('com.ticktick.task:id/skip_tutorial').click()
 click_button = driver.find_element_by_id('com.ticktick.task:id/add_task_btn').click()
 click_title = driver.find_element_by_id('com.ticktick.task:id/quick_add_title').click()
 click_title.send_keys('hello')
+=======
+>>>>>>> fc55fbb5beed09cbcf1cbcffc3159d4d67ff96d4
