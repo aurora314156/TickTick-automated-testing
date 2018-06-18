@@ -27,3 +27,5 @@ driver.find_element_by_xpath("//android.widget.RelativeLayout/android.view.ViewG
 print(6)
 driver.find_element_by_id('com.ticktick.task:id/navigation_pomo_id').click()
 print("start pomo timer")
+driver.find_element_by_id('com.ticktick.task:id/right_btn').click()
+print("done")
