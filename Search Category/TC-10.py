@@ -1,4 +1,5 @@
 from appium import webdriver
+import time
 
 desired_caps = {}
 desired_caps['platformName'] = 'Android'
@@ -22,8 +23,11 @@ save_btn = driver.find_element_by_id('com.ticktick.task:id/save_btn').click()
 # list all task under the query class
 print("start")
 driver.find_element_by_id('com.ticktick.task:id/toolbar').click()
+time.sleep(1)
 driver.find_element_by_xpath("//android.widget.ImageButton[@index='0']").click()
+time.sleep(1)
 print("start1")
-driver.find_element_by_xpath("//android.support.v7.widget.RecyclerView/android.widget.RelativeLayout[@index='3']").click()
+driver.find_element_by_xpath("//android.support.v7.widget.RecyclerView/android.widget.RelativeLayout[@index='3']/android.widget.TextView").click()
+time.sleep(1)
 print("done")
 
