@@ -114,4 +114,4 @@ try:
     driver.find_element_by_xpath("//android.widget.ImageButton").click()
 
 except:
-    print('TC-06 error of create new task in calendar with number.')
+    print('TC-06 error of create new task in calendar with phone number.')
