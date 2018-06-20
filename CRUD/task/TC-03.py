@@ -1,4 +1,6 @@
 from appium import webdriver
+from appium.webdriver.common.touch_action import TouchAction
+import time
 
 desired_caps = {}
 desired_caps['platformName'] = 'Android'
@@ -13,7 +15,7 @@ try:
 except:
     print('initial error.')
 
-# TC-03
+# create new task.
 try:
     click_button = driver.find_element_by_id('com.ticktick.task:id/add_task_btn').click()
     click_title = driver.find_element_by_id('com.ticktick.task:id/quick_add_title')
@@ -28,23 +30,25 @@ try:
     driver.find_element_by_id('com.ticktick.task:id/priority_toggle').click()
     driver.find_element_by_xpath('//android.widget.RelativeLayout/android.widget.RadioButton').click()
 
-    # ## add tag.
-    # driver.find_element_by_id('com.ticktick.task:id/tag_toggle').click()
-    # add_tag = driver.find_element_by_id('com.ticktick.task:id/quick_add_title').send_keys('tag')
+    ## add tag.
+    driver.find_element_by_id('com.ticktick.task:id/tag_toggle').click()
+    # touch.
+    action = TouchAction(driver)
+    action.tap(x=645,y=1392).release().perform()
+    time.sleep(1)
+    action.tap(x=808,y=1236).release().perform()
    
     ## choose inbox.
     driver.find_element_by_id('com.ticktick.task:id/project_layout').click()
     driver.find_element_by_xpath("//android.widget.RelativeLayout/android.widget.TextView[@text='Inbox']").click()
-    # create_taskList = driver.find_element_by_id('com.ticktick.task:id/text_create_tasklist')
-    # create_taskList.send_keys('work')
-    # driver.find_element_by_id('android:id/button1').click()  # button ok.
 
     # save task and show .
     save_btn = driver.find_element_by_id('com.ticktick.task:id/save_btn').click()
-    # driver.find_element_by_xpath('//android.widget.RelativeLayout/android.view.ViewGroup/android.widget.ImageButton').click()
-    # driver.find_element_by_xpath("//android.widget.RelativeLayout/android.widget.TextView[@text='work']").click()
+except:
+    print('create task error.')
 
-
+# TC-03
+try:
     ## edit task_name.
     driver.find_element_by_id('com.ticktick.task:id/list').click()
     driver.find_element_by_xpath("//android.widget.FrameLayout/android.support.v7.widget.RecyclerView/android.view.View[@index='0']").click()
@@ -62,33 +66,23 @@ try:
     description.send_keys('item1')
     driver.find_element_by_id('com.ticktick.task:id/input_task_kind').click()
 
+    ## edit tag.
+    driver.find_element_by_id('com.ticktick.task:id/input_tag').click()
+    time.sleep(1)
+    action = TouchAction(driver)
+    action.tap(x=645,y=1543).release().perform()
+    time.sleep(1)
+    action.tap(x=594,y=1233).release().perform()
+    time.sleep(1)
+    action.tap(x=271,y=1239).release().perform()
+    time.sleep(1)
+    action.tap(x=987,y=1686).release().perform()
+    time.sleep(1)
+    driver.find_element_by_id('com.ticktick.task:id/flexbox_layout').click()
+    driver.find_element_by_xpath("//android.support.v7.widget.RecyclerView/android.widget.LinearLayout[@index='1']").find_element_by_id('com.ticktick.task:id/checkbox').click()
+    driver.find_element_by_id('android:id/button1').click()
 
-    # ## edit tag.
-    # edit_tag = driver.find_element_by_id('com.ticktick.task:id/input_tag')
-    # edit_tag.click()
-    # edit_tag.send_keys('tag1')
-
-
-    driver.find_element_by_id('com.ticktick.task:id/input_close_keyboard').click()
+    ## show
     driver.find_element_by_xpath("//android.widget.ImageButton").click()
 except:
     print('TC-03 error.')
-
-# TC-04
-try:
-## done task.
-    driver.find_element_by_xpath("//android.widget.FrameLayout/android.support.v7.widget.RecyclerView/android.view.View[@index='0']").click()
-    Checkbox = driver.find_element_by_id('com.ticktick.task:id/task_checkbox').click()
-    driver.find_element_by_xpath("//android.widget.ImageButton").click()
-except:
-    print('TC-04 error.')
-
-# TC-05
-try:
-## delete task.
-    driver.find_element_by_xpath("//android.widget.FrameLayout/android.support.v7.widget.RecyclerView/android.view.View[@index='0']").click()
-    tool_bar = driver.find_element_by_id('com.ticktick.task:id/toolbar').click()
-    driver.find_element_by_xpath("//android.support.v7.widget.LinearLayoutCompat/android.widget.ImageView[@index='0']").click()
-    driver.find_element_by_xpath("//android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.LinearLayout[@index='9']").click()
-except:
-    print('TC-05 error.')
